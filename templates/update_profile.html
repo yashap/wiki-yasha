@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}wiki-yasha - {{user.name}}{% endblock %}
+
+{% block content %}
+	<h1>{{user.name}}</h1>
+
+	<hr>
+
+	<div class="error">{{error}}</div>
+
+	<form method="post">
+		<label>
+			<div>Email</div>
+			<input type="text" name="email" value="{{email}}">
+		</label>
+
+		<label>
+			<div>Bio</div>
+			<textarea name="bio">{{bio}}</textarea>
+		</label>
+
+		<br>
+
+		<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+	</form>
+{% endblock %}
+
+{% block js %}
+	<script>$("#nav-profile").addClass("active");</script>
+{% endblock %}

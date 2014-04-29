@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}wiki-yasha - {{user.name}}{% endblock %}
+
+{% block content %}
+	<h1>{{user.name}}</h1>
+
+	<hr>
+
+	<h3>Email</h3>
+	<p>
+		{% if user.email %}
+		{{user.email}}
+		{% else %}
+		You have not entered an email
+		{% endif %}
+	</p>
+
+	<br>
+
+	<h3>Bio</h3>
+	<p>
+		{% if user.bio %}
+		{{user.bio}}
+		{% else %}
+		You have not entered a bio
+		{% endif %}
+	</p>
+
+	<br>
+
+	<a href="/profile?upd_pro=1">
+		<button type="button" class="btn btn-primary btn-md">Edit Profile</button>
+	</a>
+
+	<a href="/profile?upd_pwd=1">
+		<button type="button" class="btn btn-primary btn-md">Change Password</button>
+	</a>
+
+{% endblock %}
+
+{% block js %}
+	<script>$("#nav-profile").addClass("active");</script>
+{% endblock %}

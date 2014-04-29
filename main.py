@@ -13,13 +13,20 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
+
 import webapp2
 
-class MainHandler(webapp2.RequestHandler):
-    def get(self):
-        self.response.write('Hello world 2!')
-
-app = webapp2.WSGIApplication([
-    ('/', MainHandler)
-], debug=True)
+# PAGE_RE = r"(/(?:[a-zA-Z0-9_-]+/?)*)"
+app = webapp2.WSGIApplication(
+	[
+		(r"/", "handlers.home.Home"),
+		(r"/signup/?", "handlers.signup.Signup"),
+		(r"/logout/?", "handlers.logout.Logout"),
+		(r"/login/?", "handlers.login.Login"),
+		(r"/profile/?", "handlers.profile.Profile"),
+		(r"/welcome/?", "handlers.welcome.Welcome")
+		# (r"/_edit" + PAGE_RE, "handlers.editPage.EditPage"),
+		# (PAGE_RE, "handlers.wikiPage.WikiPage")
+	],
+	debug=True
+)

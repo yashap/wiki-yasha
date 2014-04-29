@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>{% block title %}{% endblock %}</title>
+	<!-- Bootstrap core CSS -->
+	<link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css" />
+	<!-- Site-wide css -->
+	<link rel="stylesheet" href="/css/styles.css" type="text/css" />
+	{% block header %}
+	{% endblock %}
+</head>
+
+<body>
+
+	<!-- Navbar -->
+	<div class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<!-- Button when collapsed -->
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<!-- site title -->
+				<a class="navbar-brand" href="/">wiki-yasha</a>
+			</div>
+			<!-- items to potentially collapse -->
+			<div class="collapse navbar-collapse">
+				<!-- Menu items -->
+				<ul class="nav navbar-nav">
+					<li id="nav-home"><a href="/">Home</a></li>
+					<li id="nav-post"><a href="/index">New Wikis</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					{% if user %}
+					<li id="nav-profile"><a href="/profile">{{user.name}}</a></li>
+					<li><a href="/logout">Logout</a></li>
+					{% else %}
+					<li id="nav-signup"><a href="/signup">Sign Up</a></li>
+					<li id="nav-login"><a href="/login">Log In</a></li>
+					{% endif %}
+				</ul>
+			</div><!--/.navbar-collapse -->
+		</div><!--/.container -->
+	</div><!--/.navbar-default -->
+
+	<!-- Main body content -->
+	<div class="container">
+
+		{% block content %}
+		{% endblock %}
+
+	</div><!-- /.container -->
+
+	<!-- JavaScript -->
+	<!-- jQuery -->
+	<script src="/js/jquery-1.10.2.min.js"></script>
+	<!-- Bootstrap core JS -->
+	<script src="/js/bootstrap.min.js"></script>
+	{% block js %}
+	{% endblock %}
+</body>
+</html>

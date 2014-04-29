@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}wiki-yasha - New Post{% endblock %}
+
+{% block content %}
+	<a class="main-title" href="/blog">Sign Up</a>
+
+	<hr>
+
+	<div class="error">{{error}}</div>
+
+	<form method="post">
+		<label>
+			<div>User Name</div>
+			<input type="text" name="username" value="{{username}}">
+		</label>
+
+		<label>
+			<div>Password</div>
+			<input type="password" name="password" value="{{password}}">
+		</label>
+
+		<label>
+			<div>Verify Password</div>
+			<input type="password" name="verify" value="{{verify}}">
+		</label>
+
+		<label>
+			<div>Email</div>
+			<input type="text" name="email" value="{{email}}">
+		</label>
+
+		<br>
+
+		<button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+	</form>
+{% endblock %}
+
+{% block js %}
+	<script>$("#nav-signup").addClass("active");</script>
+{% endblock %}
