@@ -3,9 +3,6 @@
 import os
 import jinja2
 import hmac
-import random
-import string
-import hashlib
 import re
 
 from google.appengine.ext import db

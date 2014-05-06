@@ -16,7 +16,7 @@
 
 import webapp2
 
-# PAGE_RE = r"(/(?:[a-zA-Z0-9_-]+/?)*)"
+PAGE_RE = r"(/(?:[a-zA-Z0-9_-]+/?)*)"
 app = webapp2.WSGIApplication(
 	[
 		(r"/", "handlers.home.Home"),
@@ -24,9 +24,9 @@ app = webapp2.WSGIApplication(
 		(r"/logout/?", "handlers.logout.Logout"),
 		(r"/login/?", "handlers.login.Login"),
 		(r"/profile/?", "handlers.profile.Profile"),
-		(r"/welcome/?", "handlers.welcome.Welcome")
-		# (r"/_edit" + PAGE_RE, "handlers.editPage.EditPage"),
-		# (PAGE_RE, "handlers.wikiPage.WikiPage")
+		(r"/welcome/?", "handlers.welcome.Welcome"),
+		(r"/_edit" + PAGE_RE, "handlers.editPage.EditPage"),
+		(PAGE_RE, "handlers.showPage.showPage")
 	],
 	debug=True
 )

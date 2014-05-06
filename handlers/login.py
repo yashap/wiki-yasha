@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import handler
-import entities
+from entities import User
 
 class Login(handler.Handler):
 	def get(self):
@@ -11,7 +11,7 @@ class Login(handler.Handler):
 		username = self.request.get("username")
 		password = self.request.get("password")
 
-		u = entities.User.User.login(username, password)
+		u = User.User.login(username, password)
 		# remember that User.login just checks the db to see if the username and pw are valid
 		# 	if so, it returns the user object from the db
 		# it doesn't actually set the user cookie

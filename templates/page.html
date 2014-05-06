@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}wiki-yasha - This page{% endblock %}
+
+{% block navpage %}
+	<li id="nav-page"><a href="#">The Wiki Name</a></li>
+{% endblock %}
+
+{% block content %}
+	<a class="main-title">This is a page with some content</a>
+{% endblock %}
+
+{% block js %}
+	<script>$("#nav-page").addClass("active");</script>
+{% endblock %}
