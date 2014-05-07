@@ -7,19 +7,26 @@
 {% endblock %}
 
 {% block content %}
-	<h1>{{title}}</h1>
-
 	<form method="post">
-		<input type="text" name="title" value="{{title}}">
 		<div class="row">
-			<div class="col-md-6">
-				<p>Created {{created}}</p>
-			</div>
-			<div class="col-md-6">
-				<p>Last edited {{last_modified}}</p>
+			<div class="col-md-12">
+				<input type="text" name="title" value="{{title if content else ''}}" placeholder="Article title">
 			</div>
 		</div>
-		<textarea name="content">{{content}}</textarea>
+
+		{% if created %}
+		<div class="row">
+			<div class="col-md-12">
+				<p>Page created by {{user.name}} on {{created}}, Last edited by {{user.name}} on {{last_modified}}</p>
+			</div>
+		</div>
+		{% endif %}
+
+		<div class="row">
+			<div class="col-md-12">
+				<textarea name="content" placeholder="Article content">{{content}}</textarea>
+			</div>
+		</div>
 
 		<br>
 

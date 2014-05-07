@@ -11,6 +11,8 @@ class Page(db.Model):
 	content = db.StringProperty(required = True)
 	created = db.DateTimeProperty(auto_now_add = True)
 	last_modified = db.DateTimeProperty(auto_now = True)
+	created_user = db.StringProperty(required = True)
+	modified_user = db.StringProperty(required = True)
 
 	@classmethod
 	def by_page_id(cls, page_id):
