@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}wiki-yasha - New Page{% endblock %}
+
+{% block content %}
+	<a class="main-title" href="/blog">Create a New Wiki Page</a>
+
+	<hr>
+
+	<div class="error">{{error}}</div>
+
+	<form method="post">
+		<label>
+			<div>Page Name</div>
+			<p>e.g. wiki-yasha.appspot.com/<b>test_page</b></p>
+			<input type="text" name="pagename" value="{{pagename}}">
+		</label>
+
+		<br>
+
+		<button type="submit" class="btn btn-primary btn-lg">Create Page</button>
+	</form>
+{% endblock %}
+
+{% block js %}
+	<script>$("#nav-signup").addClass("active");</script>
+{% endblock %}

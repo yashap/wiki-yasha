@@ -25,6 +25,7 @@ app = webapp2.WSGIApplication(
 		(r"/login/?", "handlers.login.Login"),
 		(r"/profile/?", "handlers.profile.Profile"),
 		(r"/welcome/?", "handlers.welcome.Welcome"),
+		(r"/newpage/?", "handlers.newPage.NewPage"),
 		(r"/_edit" + PAGE_RE, "handlers.editPage.EditPage"),
 		(PAGE_RE, "handlers.showPage.showPage")
 	],

@@ -16,4 +16,9 @@ class Page(db.Model):
 
 	@classmethod
 	def by_page_id(cls, page_id):
-		return cls.all().ancestor(page_key()).filter("page_id =", page_id).get()
+		# return cls.all().filter("page_id =", page_id).ancestor(page_key()).get()
+		return cls.all().filter("page_id =", page_id).get()
+
+	@classmethod
+	def by_title(cls, title):
+		return cls.all().filter("title =", title).ancestor(page_key()).get()
