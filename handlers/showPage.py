@@ -5,7 +5,6 @@ from entities import Page
 
 class showPage(handler.Handler):
 	def get(self, page_id):
-		# in main.py, page_id is automatically passed to the handler
 		self.page_id = page_id[1:]
 
 		q = Page.Page.by_page_id(self.page_id)

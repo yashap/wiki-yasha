@@ -5,7 +5,6 @@ from entities import Page
 
 class EditPage(handler.Handler):
 	def get(self, page_id):
-		# in main.py, page_id is automatically passed to the handler
 		if not self.user:
 			self.redirect("/signup")
 

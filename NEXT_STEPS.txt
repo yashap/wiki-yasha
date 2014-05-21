@@ -11,3 +11,6 @@ editPage
 
 home
 - Should display the 10 most recently edited wikis?
+
+newPage
+- When people do shitty stuff in the 
