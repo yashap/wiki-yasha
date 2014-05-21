@@ -5,6 +5,7 @@ import jinja2
 import hmac
 import re
 
+from entities import Page
 from google.appengine.ext import db
 
 # Template boilerplate
@@ -44,11 +45,25 @@ def blog_key(name = "default"):
 user_regex = re.compile(r"^[a-zA-Z0-9_-]{3,20}$")
 def valid_username(username):
 	return username and user_regex.match(username)
+# if valid, return the regex match object
 
 pass_regex = re.compile(r"^.{3,20}$")
 def valid_password(password):
 	return password and pass_regex.match(password)
+# if valid, return the regex match object
 
 email_regex = re.compile(r"^[\S]+@[\S]+\.[\S]+$")
 def valid_email(email):
 	return not email or email_regex.match(email)
+# either need no email, or a valid email, to return the regex match object
+
+page_id_regex = re.compile(r"^[a-zA-Z0-9_-]{2,30}$")
+reserved_pages = ["signup", "logout", "login", "profile", "welcome", "newpage", "_edit"]
+def valid_page_id(page_id):
+	if page_id_regex.match(page_id) and page_id not in reserved_pages:
+		if Page.Page.by_page_id(page_id):
+			return {"is_valid": False, "error": "That page name is already taken"}
+		else:
+			return {"is_valid": True}
+	else:
+		return {"is_valid": False, "error": "That is not a valid page name"}

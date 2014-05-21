@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import handler
-# from entities import Page
+import utils
 
 class NewPage(handler.Handler):
 	def get(self):
@@ -9,6 +9,9 @@ class NewPage(handler.Handler):
 		self.render("new_page.html")
 
 	def post(self):
-		self.url = self.request.get("pagename")
-		# Test if the page name is taken, if so throw error, else redirect
-		self.redirect("/" + self.url)
+		self.page_id = self.request.get("page_id")
+		self.valid_page = utils.valid_page_id(self.page_id)
+		if self.valid_page["is_valid"]:
+			self.redirect("/" + self.page_id)
+		else:
+			self.render("new_page.html", error=self.valid_page["error"])
