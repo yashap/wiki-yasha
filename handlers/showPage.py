@@ -14,3 +14,4 @@ class showPage(handler.Handler):
 
 		else:
 			self.redirect("/_edit/%s" % self.page_id)
+

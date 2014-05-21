@@ -7,6 +7,9 @@
 {% endblock %}
 
 {% block content %}
+
+	<br>
+
 	<form method="post">
 		<div class="row">
 			<div class="col-md-12">
@@ -22,6 +25,8 @@
 		</div>
 		{% endif %}
 
+		<br>
+
 		<div class="row">
 			<div class="col-md-12">
 				<textarea name="content" placeholder="Article content">{{content}}</textarea>
@@ -32,7 +37,6 @@
 
 		<button type="submit" class="btn btn-primary btn-lg">Submit</button>
 	</form>
-
 
 {% endblock %}
 

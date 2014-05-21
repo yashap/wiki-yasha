@@ -19,16 +19,13 @@ class EditPage(handler.Handler):
 			self.render("edit_page.html", title="New Page")
 
 	def post(self, page_id):
-		print(page_id)
 		q = Page.Page.by_page_id(page_id)
 
 		if q:
-			print("qblock")
 			self.created_user = q.created_user
 			self.title = self.request.get("title") if self.request.get("title") else q.title
 			self.content = self.request.get("content") if self.request.get("content") else q.content
 		else:
-			print("noqblovck")
 			self.created_user = self.user.name
 			self.title = self.request.get("title")
 			self.content = self.request.get("content")
@@ -61,6 +58,3 @@ class EditPage(handler.Handler):
 			p.put()
 
 			self.redirect("/%s" % self.page_id)
-
-# When I add posts, make sure I'm using ancestors!
-# Also, make editing existing posts work!

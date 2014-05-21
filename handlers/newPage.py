@@ -5,6 +5,9 @@ import utils
 
 class NewPage(handler.Handler):
 	def get(self):
+		if not self.user:
+			self.redirect("/signup")
+
 		# Pass wrong responses
 		self.render("new_page.html")
 
