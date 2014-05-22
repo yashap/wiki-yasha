@@ -14,3 +14,6 @@ class showPage(handler.Handler):
 		else:
 			self.redirect("/_edit/%s" % self.page_id)
 
+	def post(self, page_id):
+		self.page_id = page_id[1:]
+		self.redirect("/_edit/%s" % self.page_id)

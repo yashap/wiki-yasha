@@ -16,7 +16,7 @@
 	{% if created %}
 	<div class="row">
 		<div class="col-md-12">
-			<p>Page created {{created}}, last edited {{last_modified}}</p>
+			<p>Page created {{created.strftime("%b %d, %Y")}}, last edited {{last_modified.strftime("%b %d, %Y")}}</p>
 		</div>
 	</div>
 	{% endif %}
@@ -27,6 +27,11 @@
 		</div>
 	</div>
 
+	<br>
+	
+	<form method="post" >
+		<button type="submit" class="btn btn-primary btn-lg">Edit</button>
+	</form>
 {% endblock %}
 
 {% block js %}
