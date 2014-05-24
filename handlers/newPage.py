@@ -17,4 +17,4 @@ class NewPage(handler.Handler):
 		if self.valid_page["is_valid"]:
 			self.redirect("/" + self.page_id)
 		else:
-			self.render("new_page.html", error=self.valid_page["error"])
+			self.render("new_page.html", error=self.valid_page["error"], page_id=self.page_id)
