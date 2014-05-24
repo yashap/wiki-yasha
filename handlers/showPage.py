@@ -9,7 +9,8 @@ class showPage(handler.Handler):
 
 		q = Page.Page.by_page_id(self.page_id)
 		if q:
-			self.render("page.html", title=q.title, content=q.content, created=q.created, last_modified=q.last_modified)
+			self.render("page.html", title=q.title, content=q.content, created=q.created,
+				last_modified=q.last_modified, created_user=q.created_user, modified_user=q.modified_user)
 
 		else:
 			self.redirect("/_edit/%s" % self.page_id)

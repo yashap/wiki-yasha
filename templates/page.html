@@ -16,7 +16,7 @@
 	{% if created %}
 	<div class="row">
 		<div class="col-md-12">
-			<p>Page created {{created.strftime("%b %d, %Y")}}, last edited {{last_modified.strftime("%b %d, %Y")}}</p>
+			<p>Page created by {{created_user}} on {{created.strftime("%b %d, %Y, %H:%M:%S")}}, Last edited by {{modified_user}} on {{last_modified.strftime("%b %d, %Y, %H:%M:%S")}}</p>
 		</div>
 	</div>
 	{% endif %}

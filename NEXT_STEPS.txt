@@ -1,17 +1,7 @@
-#1 - CONSISTENCY/TRANSACTIONS!
-
-editPage.py
-- When I add posts, make sure I'm using ancestors!
-	- Right now everything works, BUT there's consistency issues
-		- Redirect to show page happens before the db write finishes
-	-  Still need to make sure I'm using transactions, and need to 
-- Also, check to make sure editing posts works
+fix consistency/transactions
 
 home.py
 - Should display the 10 most recently edited wikis?
-
-newPage.py
-- refil with bad page when error
 
 utils.py
 - implement memcached
