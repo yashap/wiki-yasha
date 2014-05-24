@@ -60,10 +60,17 @@ def valid_email(email):
 page_id_regex = re.compile(r"^[a-zA-Z0-9_-]{2,30}$")
 reserved_pages = ["signup", "logout", "login", "profile", "welcome", "newpage", "_edit"]
 def valid_page_id(page_id):
-	if page_id_regex.match(page_id) and page_id not in reserved_pages:
+	if page_id_regex.match(page_id) and page_id not in reserved_pages and js_index(page_id, " ") == -1:
 		if Page.Page.by_page_id(page_id):
 			return {"is_valid": False, "error": "That page name is already taken"}
 		else:
 			return {"is_valid": True}
 	else:
 		return {"is_valid": False, "error": "That is not a valid page name"}
+
+# JS style indexOf
+def js_index(data, element):
+	try:
+		return  data.index(element)
+	except ValueError:
+		return -1

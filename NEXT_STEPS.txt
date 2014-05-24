@@ -1,3 +1,5 @@
+#1 - CONSISTENCY/TRANSACTIONS!
+
 editPage.py
 - When I add posts, make sure I'm using ancestors!
 	- Right now everything works, BUT there's consistency issues
@@ -9,7 +11,7 @@ home.py
 - Should display the 10 most recently edited wikis?
 
 newPage.py
-- When people do shitty stuff in the
+- refil with bad page when error
 
 utils.py
 - implement memcached

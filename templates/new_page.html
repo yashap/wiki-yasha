@@ -3,19 +3,18 @@
 {% block title %}wiki-yasha - New Page{% endblock %}
 
 {% block content %}
-	<a class="main-title" href="/blog">Create a New Wiki Page</a>
+	<h1>Create a New Wiki Page</h1>
 
 	<hr>
 
 	<div class="error">{{error}}</div>
 
 	<form method="post">
-		<label>
-			<div>Page Name</div>
-			<p>e.g. wiki-yasha.appspot.com/<b>example_page</b></p>
-			<input type="text" name="page_id" value="{{page_id}}">
-		</label>
+		<h3>Page Name</h3>
+		<p>e.g. wiki-yasha.appspot.com/<b style="color: blue;">example_page</b></p>
+		<input type="text" name="page_id" value="{{page_id}}">
 
+		<br>
 		<br>
 
 		<button type="submit" class="btn btn-primary btn-lg">Create Page</button>
