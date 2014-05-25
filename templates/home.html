@@ -3,7 +3,36 @@
 {% block title %}wiki-yasha{% endblock %}
 
 {% block content %}
-	<a class="main-title">Welcome to wiki-yasha!</a>
+	<h1>Recently Edited Wikis</h1>
+
+	<hr>
+
+	{% if top_pages %}
+		{% for page in top_pages %}
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>{{page.title}}</h2>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<p class="subtle">Page created by {{page.created_user}} on {{page.created.strftime("%b %d, %Y, %H:%M:%S")}}, Last edited by {{page.modified_user}} on {{page.last_modified.strftime("%b %d, %Y, %H:%M:%S")}}</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<p>{{page.content}}</p>
+				</div>
+			</div>
+		</div>
+
+		<hr>
+		{% endfor %}
+	{% endif %}
+
 {% endblock %}
 
 {% block js %}

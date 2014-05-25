@@ -19,12 +19,12 @@ def valid_pw(name, pw, h):
 	salt = h.split("|")[0]
 	return h == make_pw_hash(name, pw, salt)
 
-def users_key():
+def user_key():
 	return db.Key.from_path("Wiki_user_kind", "Wiki_user_name")
-	# When creating User entities, I can set parent = users_key()
+	# When creating User entities, I can set parent = user_key()
 	# This will set the parent to a semi-fictional Datastore entity, with:
 	# 	kind "Wiki_user_kind"
-	# 	id "Wiki_user_name"
+	# 	name "Wiki_user_name"
 	# This will really just force strong consistency with any queries related to users
 
 class User(db.Model):
@@ -37,18 +37,19 @@ class User(db.Model):
 
 	@classmethod
 	def by_id(cls, uid):
-		return cls.get_by_id(uid, parent = users_key())
+		return cls.get_by_id(uid, parent = user_key())
 
 	@classmethod
 	def by_name(cls, name):
-		u = db.GqlQuery("SELECT * FROM User WHERE name = :1", name).get()
-		return u
+		return cls.all().filter("name =", name).ancestor(user_key()).get()
+		# u = db.GqlQuery("SELECT * FROM User WHERE name = :1", name).get()
+		# return u
 
 	@classmethod
 	def register(cls, name, pw, email=None, bio=None):
 		pw_hash = make_pw_hash(name, pw)
 		return User(
-			parent = users_key(),
+			parent = user_key(),
 			name = name,
 			pw_hash = pw_hash,
 			email = email,

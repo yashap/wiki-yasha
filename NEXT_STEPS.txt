@@ -1,7 +1,8 @@
-fix consistency/transactions
+Generally allow proper spacing in page content
 
-home.py
-- Should display the 10 most recently edited wikis?
+editPage
+- better checking for titles that are already taken (need to check that it's not taken by a DIFFERENT page_id)
+- also is there an issue with errors not displaying?
 
 utils.py
 - implement memcached

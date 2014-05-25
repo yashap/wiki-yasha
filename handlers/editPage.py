@@ -8,8 +8,8 @@ class EditPage(handler.Handler):
 		if not self.user:
 			self.redirect("/signup")
 
-		page_id = page_id[1:]
-		q = Page.Page.by_page_id(page_id)
+		self.page_id = page_id[1:]
+		q = Page.Page.by_page_id(self.page_id)
 
 		if q:
 			self.render("edit_page.html", title=q.title, content=q.content, created=q.created,
@@ -19,12 +19,11 @@ class EditPage(handler.Handler):
 			self.render("edit_page.html", title="New Page")
 
 	def post(self, page_id):
-		page_id = page_id[1:]
+		self.page_id = page_id[1:]
 
-		q = Page.Page.by_page_id(page_id)
+		q = Page.Page.by_page_id(self.page_id)
 
 		if q:
-			print("i found it!")
 			self.created_user = q.created_user
 			self.title = self.request.get("title") if self.request.get("title") else q.title
 			self.content = self.request.get("content") if self.request.get("content") else q.content
@@ -34,7 +33,6 @@ class EditPage(handler.Handler):
 			self.content = self.request.get("content")
 
 		self.modified_user = self.user.name
-		self.page_id = page_id
 
 		have_error = False
 		params = {"title": self.title,
@@ -63,7 +61,7 @@ class EditPage(handler.Handler):
 				q.modified_user=self.modified_user
 			else:
 				q = Page.Page(title=self.title, content=self.content, created_user=self.created_user,
-					modified_user=self.modified_user, page_id=self.page_id)
+					modified_user=self.modified_user, page_id=self.page_id, parent=Page.page_key())
 			q.put()
 
 			self.redirect("/%s" % self.page_id)

@@ -4,6 +4,14 @@ body {
 .error {
 	color: red;
 }
+.subtle {
+	color: #b4b4b4;
+}
+
+/*--------------------------------------
+Styles from previous project, verify that I still want
+--------------------------------------*/
+
 label {
 	display: block;
 	font-size: 20px;
