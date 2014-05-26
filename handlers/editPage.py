@@ -52,7 +52,7 @@ class EditPage(handler.Handler):
 			params["error"] = "You must enter content for the page."
 			have_error = True
 
-		if have_error:
+		if have_error and not params['error']:
 			self.render("edit_page.html", **params)
 		else:
 			if q:

@@ -7,3 +7,6 @@ editPage
 utils.py
 - implement memcached
 	- for pages and users?  or just pages?
+
+*** Try switching title to subject in html
+--> will fix for grader?
