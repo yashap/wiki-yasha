@@ -1,13 +1,19 @@
 #!/usr/bin/env python
 
 import handler
+import re
 from entities import User
 
 class Login(handler.Handler):
 	def get(self):
-		self.render("login.html")
+		next_url = self.request.headers.get("referer", "/")
+		self.render("login.html", next_url=next_url)
 
 	def post(self):
+		next_url = str(self.request.get("next_url"))
+		if not next_url or re.match(r"(.*)/(login|signup)/?", next_url):
+			next_url = "/"
+
 		username = self.request.get("username")
 		password = self.request.get("password")
 
@@ -19,6 +25,6 @@ class Login(handler.Handler):
 		if u:
 			self.login(u)
 			# that sets the cookie!
-			self.redirect("/welcome")
+			self.redirect(next_url)
 		else:
-			self.render("login.html", error = "Invalid login.")
+			self.render("login.html", next_url=next_url, error="Invalid login.")

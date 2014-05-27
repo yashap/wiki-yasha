@@ -3,23 +3,31 @@
 import handler
 import utils
 import entities
+import re
 
 class Signup(handler.Handler):
 	def get(self):
-		self.render("signup.html")
+		next_url = self.request.headers.get("referer", "/")
+		self.render("signup.html", next_url=next_url)
 
 	def post(self):
+		have_error = False
+
+		next_url = str(self.request.get("next_url"))
+		if not next_url or re.match(r"(.*)/(login|signup)/?", next_url):
+			next_url = "/"
+
 		self.username = self.request.get("username")
 		self.password = self.request.get("password")
 		self.verify = self.request.get("verify")
 		self.email = self.request.get("email")
 		self.bio = None
 
-		have_error = False
 		params = {"username": self.username,
 			"password": self.password,
 			"verify": self.verify,
-			"email": self.email
+			"email": self.email,
+			"next_url": next_url
 		}
 
 		if not utils.valid_username(self.username):
@@ -45,4 +53,4 @@ class Signup(handler.Handler):
 			u.put()
 
 			self.login(u)
-			self.redirect("/welcome")
+			self.redirect(next_url)

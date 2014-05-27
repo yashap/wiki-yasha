@@ -1,4 +1,4 @@
-Generally allow proper spacing in page content
+***Generally allow proper spacing in page content
 
 editPage
 - better checking for titles that are already taken (need to check that it's not taken by a DIFFERENT page_id)
@@ -8,5 +8,9 @@ utils.py
 - implement memcached
 	- for pages and users?  or just pages?
 
-*** Try switching title to subject in html
---> will fix for grader?
+
+########################
+Consider implementing Wikipedia's api
+
+http://en.wikipedia.org/w/api.php?format=json&action=query&prop=revisions&titles=Stack%20Overflow&rvprop=content
+########################
