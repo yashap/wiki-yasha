@@ -11,7 +11,7 @@ class Login(handler.Handler):
 
 	def post(self):
 		next_url = str(self.request.get("next_url"))
-		if not next_url or re.match(r"(.*)/(login|signup)/?", next_url):
+		if not next_url or re.match(r"(.*)/(login|signup|logout)/?", next_url):
 			next_url = "/"
 
 		username = self.request.get("username")

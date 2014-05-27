@@ -14,7 +14,7 @@ class Signup(handler.Handler):
 		have_error = False
 
 		next_url = str(self.request.get("next_url"))
-		if not next_url or re.match(r"(.*)/(login|signup)/?", next_url):
+		if not next_url or re.match(r"(.*)/(login|signup|logout)/?", next_url):
 			next_url = "/"
 
 		self.username = self.request.get("username")
