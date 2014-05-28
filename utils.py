@@ -68,7 +68,8 @@ def valid_page_id(page_id):
 	else:
 		return {"is_valid": False, "error": "That is not a valid page name"}
 
-# JS style indexOf
+# General utils
+###############################
 def js_index(data, element):
 	try:
 		return  data.index(element)
