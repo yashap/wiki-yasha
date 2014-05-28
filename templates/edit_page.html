@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}wiki-yasha - {{title}}{% endblock %}
+{% block title %}wiki-yasha - {{title if editing else "New Page"}}{% endblock %}
 
 {% block navpage %}
-	<li id="nav-page"><a href="#">{{title}}</a></li>
+	<li id="nav-page"><a href="#">{{title if editing else "New Page"}}</a></li>
 {% endblock %}
 
 {% block content %}

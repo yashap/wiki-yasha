@@ -8,7 +8,7 @@ def page_key():
 class Page(db.Model):
 	page_id = db.StringProperty(required = True)
 	title = db.StringProperty(required = True)
-	content = db.StringProperty(required = True)
+	content = db.TextProperty(required = True)
 	created = db.DateTimeProperty(auto_now_add = True)
 	last_modified = db.DateTimeProperty(auto_now = True)
 	created_user = db.StringProperty(required = True)

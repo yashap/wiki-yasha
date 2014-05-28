@@ -7,6 +7,18 @@ body {
 .subtle {
 	color: #b4b4b4;
 }
+pre.clear-format {
+	display: block;
+	padding: 0;
+	margin: 0;
+	font-size: 1.1em;
+	line-height: 1.5;
+	color: black;
+	background-color: inherit;
+	border: none;
+	border-radius: 4px;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
 
 /*--------------------------------------
 Styles from previous project, verify that I still want

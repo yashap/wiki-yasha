@@ -12,11 +12,11 @@ class EditPage(handler.Handler):
 		q = Page.Page.by_page_id(self.page_id)
 
 		if q:
-			self.render("edit_page.html", title=q.title, content=q.content, created=q.created,
+			self.render("edit_page.html", editing=True, title=q.title, content=q.content, created=q.created,
 				last_modified=q.last_modified, created_user=q.created_user, modified_user=q.modified_user)
 
 		else:
-			self.render("edit_page.html", title="New Page")
+			self.render("edit_page.html", editing=False)
 
 	def post(self, page_id):
 		self.page_id = page_id[1:]

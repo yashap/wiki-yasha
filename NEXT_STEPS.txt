@@ -1,9 +1,9 @@
-***Generally allow proper spacing in page content
-
 utils.py
 - implement memcached
 	- for pages and users?  or just pages?
 
+home.py
+- limit characters displayed in some way
 
 ########################
 Consider implementing Wikipedia's api
