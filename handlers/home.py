@@ -10,8 +10,10 @@ class Home(handler.Handler):
 		for i in range(len(top_pages)):
 			content = top_pages[i].content
 			cutoff = 300
-			if content.count("\n") > 3:
-				cutoff = utils.findnth(content, "\n", 3) - 1
-				cutoff = cutoff if cutoff < 300 else 300
-			top_pages[i].content = top_pages[i].content[:cutoff] + " ..."
+			line_count = content.count("\n")
+			max_lines = 3
+			if len(content) > cutoff or line_count > max_lines:
+				pos = utils.findnth(content, "\n", max_lines) - 1
+				cutoff = min(pos, cutoff)
+				top_pages[i].content = content[:cutoff] + " ..."
 		self.render("home.html", top_pages=top_pages)
